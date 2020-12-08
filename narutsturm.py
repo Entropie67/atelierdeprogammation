@@ -39,13 +39,6 @@ while continuer:
         if event.type == KEYDOWN:
             if event.key == K_RIGHT:
                 position = position.move(5, 0)
-            if event.key == K_DOWN:
-                position = position.move(0, 5)
         #ICI RAJOUTER LES AUTRES DEPLACEMENT
 
-
-
-    fenetre.fill(couleur)
-    fenetre.blit(perso, position)
-    pygame.display.flip()
 

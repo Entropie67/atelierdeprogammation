@@ -23,14 +23,24 @@ perso = pygame.image.load("images/narut0.png").convert_alpha()
 # On redimensionne l'image en 20 px de large et 50 de haut
 perso = pygame.transform.scale(perso, (20, 50))
 # On colle le personnage
-fenetre.blit(perso, (200,300))
+fenetre.blit(perso, (0,0))
 position = perso.get_rect()
 # Il faut penser à rafraichir l'écran ! (Surtout en été)
 pygame.display.flip()
 
+####################################
+# Lecture de la map
+#################################"
+with open("maps/map1.txt", 'r') as file:
+    data = file.read()
+    print(data)
+
+
+
+
 # Boucle de jeu, "infinie", parce que le jeu doit continuer tant que je ne l'arrête pas
 continuer = True
-
+pygame.key.set_repeat(500, 30)
 while continuer:
     for event in pygame.event.get():
         if event.type == QUIT:
@@ -40,5 +50,6 @@ while continuer:
             if event.key == K_RIGHT:
                 position = position.move(5, 0)
         #ICI RAJOUTER LES AUTRES DEPLACEMENT
-
-
+    fenetre.fill(couleur)
+    fenetre.blit(perso, position)
+    pygame.display.flip()

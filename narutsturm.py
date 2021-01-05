@@ -34,6 +34,43 @@ sol = pygame.image.load("images/gazon.jpg").convert_alpha()
 # On redimensionne l'image en 20 px de large et 50 de haut
 sol = pygame.transform.scale(sol, (32, 32))
 ####################################
+def move(structure, position, direction):
+    x = position[0]
+    y = position[1]
+    colonne = x // 32
+    ligne = y // 32
+    if direction == "droite":
+        if structure[ligne][colonne + 1] == "m":
+            print("Bim le mur")
+            return position
+        else:
+            position[0] += 32
+            #position = position.move(32, 0)
+    if direction == "gauche":
+        if structure[ligne][colonne + 1] == "m":
+            print("Bim le mur")
+            return position
+        else:
+            position[0] += 32
+            #position = position.move(32, 0)
+    if direction == "bas":
+        if structure[ligne][colonne + 1] == "m":
+            print("Bim le mur")
+            return position
+        else:
+            position[0] += 32
+            #position = position.move(32, 0)
+    if direction == "haut":
+        if structure[ligne][colonne + 1] == "m":
+            print("Bim le mur")
+            return position
+        else:
+            position[0] += 32
+            #position = position.move(32, 0)
+    print(f"Le personne se trouve actuellement en colonne {colonne} et ligne {ligne}")
+    return position
+
+####################################
 # Lecture de la map
 #################################"
 with open("maps/map1.txt", 'r') as file:
@@ -52,6 +89,7 @@ while continuer:
             continuer = 0
         if event.type == KEYDOWN:
             if event.key == K_RIGHT:
+                move(structure, position, "droite")
                 position = position.move(5, 0)
             if event.key == K_LEFT:
                 position = position.move(-5, 0)

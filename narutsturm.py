@@ -21,9 +21,9 @@ fenetre.fill(couleur)
 # Chargement du personnage
 perso = pygame.image.load("images/narut0.png").convert_alpha()
 # On redimensionne l'image en 20 px de large et 50 de haut
-perso = pygame.transform.scale(perso, (20, 50))
+perso = pygame.transform.scale(perso, (32, 32))
 # On colle le personnage
-fenetre.blit(perso, (0,0))
+fenetre.blit(perso, (32, 32))
 position = perso.get_rect()
 # Il faut penser à rafraichir l'écran ! (Surtout en été)
 pygame.display.flip()
@@ -47,25 +47,25 @@ def move(structure, position, direction):
             position[0] += 32
             #position = position.move(32, 0)
     if direction == "gauche":
-        if structure[ligne][colonne + 1] == "m":
+        if structure[ligne][colonne - 1] == "m":
             print("Bim le mur")
             return position
         else:
-            position[0] += 32
+            position[0] -= 32
             #position = position.move(32, 0)
     if direction == "bas":
-        if structure[ligne][colonne + 1] == "m":
+        if structure[ligne + 1][colonne] == "m":
             print("Bim le mur")
             return position
         else:
-            position[0] += 32
+            position[1] += 32
             #position = position.move(32, 0)
     if direction == "haut":
-        if structure[ligne][colonne + 1] == "m":
+        if structure[ligne - 1][colonne] == "m":
             print("Bim le mur")
             return position
         else:
-            position[0] += 32
+            position[1] -= 32
             #position = position.move(32, 0)
     print(f"Le personne se trouve actuellement en colonne {colonne} et ligne {ligne}")
     return position
@@ -90,13 +90,15 @@ while continuer:
         if event.type == KEYDOWN:
             if event.key == K_RIGHT:
                 move(structure, position, "droite")
-                position = position.move(5, 0)
             if event.key == K_LEFT:
-                position = position.move(-5, 0)
+                move(structure, position, "gauche")
+
             if event.key == K_UP:
-                position = position.move(0, -5)
+                move(structure, position, "haut")
+
             if event.key == K_DOWN:
-                position = position.move(0, 5)
+                move(structure, position, "bas")
+
     fenetre.fill(couleur)
 
     num_ligne = 0

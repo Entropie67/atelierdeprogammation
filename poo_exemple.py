@@ -27,14 +27,14 @@ class Perso:
             self.hp = 100
 
     def en_vie(self):
-
+        return True if self.hp > 0 else False
 
 thor = Perso("Thor", "foudre")
 hulk = Perso("Hulk", "Force")
 
 thor.change_nom("Olivier")
 
-thor.afficher()
+print(thor.en_vie())
 
 
 

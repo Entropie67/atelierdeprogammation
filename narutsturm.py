@@ -19,7 +19,7 @@ couleur = (92, 107, 192)
 fenetre.fill(couleur)
 
 # Chargement du personnage
-perso = pygame.image.load("images/narut0.png").convert_alpha()
+perso = pygame.image.load("images/mario_bas.gif").convert_alpha()
 # On redimensionne l'image en 20 px de large et 50 de haut
 perso = pygame.transform.scale(perso, (32, 32))
 # On colle le personnage
@@ -30,6 +30,8 @@ pygame.display.flip()
 
 #########
 mur = pygame.image.load("images/mur.jpg").convert_alpha()
+caisse = pygame.image.load("images/caisse.jpg").convert_alpha()
+but = pygame.image.load("images/objectif.png").convert_alpha()
 sol = pygame.image.load("images/gazon.jpg").convert_alpha()
 # On redimensionne l'image en 20 px de large et 50 de haut
 sol = pygame.transform.scale(sol, (32, 32))
@@ -108,6 +110,10 @@ while continuer:
         for case in ligne:
             if case == 'm':
                 fenetre.blit(mur, (num_col * 32, num_ligne * 32))
+            elif case == "#":
+                fenetre.blit(caisse, (num_col * 32, num_ligne * 32))
+            elif case == "x":
+                fenetre.blit(but, (num_col * 32, num_ligne * 32))
             else:
                fenetre.blit(sol, (num_col * 32, num_ligne * 32))
             num_col += 1

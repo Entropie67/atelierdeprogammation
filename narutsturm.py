@@ -45,6 +45,14 @@ def move(structure, position, direction):
         if structure[ligne][colonne + 1] == "m":
             print("Bim le mur")
             return position
+        elif structure[ligne][colonne + 1] == "#":
+            print("Attention, caisse !")
+            if structure[ligne][colonne + 2] == "_":
+                print(structure[ligne])
+                structure[ligne] = structure[ligne][:colonne + 2] + "#" + structure[ligne][colonne + 3:]
+                structure[ligne] = structure[ligne][:colonne + 1] + "_" + structure[ligne][colonne + 2:]
+                print(structure[ligne])
+                position[0] += 32
         else:
             position[0] += 32
             #position = position.move(32, 0)

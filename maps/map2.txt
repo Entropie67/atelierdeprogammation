@@ -1,9 +1,9 @@
 __mmmmmmmmm
 m_mm_____mm
 m____mmm_mm
-m________mm
-m________mm
-m__#_____mm
+m____m___mm
+m____m___mm
+m__#_m___mm
 m________mm
 m____x__mmm
 mmmmmmmmmmm

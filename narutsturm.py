@@ -6,6 +6,7 @@
 # C'est comme le from robot import * de France IOI
 import pygame
 from pygame.locals import *
+from deplacement import move
 
 # Ouverture de la fenêtre Pygame
 TAILLE_FENETRE = (640, 480)
@@ -36,57 +37,6 @@ sol = pygame.image.load("images/gazon.jpg").convert_alpha()
 # On redimensionne l'image en 20 px de large et 50 de haut
 sol = pygame.transform.scale(sol, (32, 32))
 ####################################
-def move(structure, position, direction):
-    x = position[0]
-    y = position[1]
-    colonne = x // 32
-    ligne = y // 32
-    if direction == "droite":
-        if structure[ligne][colonne + 1] == "m":
-            print("Bim le mur")
-            return position
-        elif structure[ligne][colonne + 1] == "#":
-            print("Attention, caisse !")
-            if structure[ligne][colonne + 2] == "_":
-                print(structure[ligne])
-                structure[ligne] = structure[ligne][:colonne + 2] + "#" + structure[ligne][colonne + 3:]
-                structure[ligne] = structure[ligne][:colonne + 1] + "_" + structure[ligne][colonne + 2:]
-                print(structure[ligne])
-                position[0] += 32
-        else:
-            position[0] += 32
-            #position = position.move(32, 0)
-    if direction == "gauche":
-        if structure[ligne][colonne - 1] == "m":
-            print("Bim le mur")
-            return position
-        elif structure[ligne][colonne - 1] == "#":
-            print("Attention, caisse !")
-            if structure[ligne][colonne - 2] == "_":
-                print(structure[ligne])
-                structure[ligne] = structure[ligne][:colonne - 2] + "#" + structure[ligne][colonne - 1:]
-                structure[ligne] = structure[ligne][:colonne - 1] + "_" + structure[ligne][colonne:]
-                print(structure[ligne])
-                position[0] -= 32
-        else:
-            position[0] -= 32
-            #position = position.move(32, 0)
-    if direction == "bas":
-        if structure[ligne + 1][colonne] == "m":
-            print("Bim le mur")
-            return position
-        else:
-            position[1] += 32
-            #position = position.move(32, 0)
-    if direction == "haut":
-        if structure[ligne - 1][colonne] == "m":
-            print("Bim le mur")
-            return position
-        else:
-            position[1] -= 32
-            #position = position.move(32, 0)
-    print(f"Le personne se trouve actuellement en colonne {colonne} et ligne {ligne}")
-    return position
 
 ####################################
 # Lecture de la map

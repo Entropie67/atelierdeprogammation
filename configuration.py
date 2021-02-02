@@ -7,3 +7,9 @@ TAILLE_FENETRE = (NB_COLONNES * CARRE, NB_COLONNES * CARRE)
 COULEUR = (0, 0, 0)
 MAP = ["maps/map1.txt", "maps/map2.txt"]
 WALL = "images/mur.jpg"
+
+MARIO = {'Bas': "images/mario_bas.gif",
+         'Droite': "images/mario_droite.gif",
+         'Haut': "images/mario_haut.gif",
+         'Gauche': "images/mario_gauche.gif"}
+

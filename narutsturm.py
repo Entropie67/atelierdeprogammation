@@ -17,12 +17,16 @@ fenetre = pygame.display.set_mode(TAILLE_FENETRE)
 pygame.display.set_caption("Narusturm !")
 
 # Chargement du personnage
-perso = pygame.image.load("images/mario_bas.gif").convert_alpha()
-# On redimensionne l'image en 20 px de large et 50 de haut
-perso = pygame.transform.scale(perso, (CARRE, CARRE))
-# On colle le personnage
-fenetre.blit(perso, (CARRE, CARRE))
-position = perso.get_rect()
+perso_bas = pygame.image.load(MARIO['Bas']).convert_alpha()
+perso_bas = pygame.transform.scale(perso_bas, (CARRE, CARRE))
+perso_haut = pygame.image.load(MARIO['Haut']).convert_alpha()
+perso_haut = pygame.transform.scale(perso_haut, (CARRE, CARRE))
+perso_droite = pygame.image.load(MARIO['Droite']).convert_alpha()
+perso_droite = pygame.transform.scale(perso_droite, (CARRE, CARRE))
+perso_gauche = pygame.image.load(MARIO['Gauche']).convert_alpha()
+perso_gauche = pygame.transform.scale(perso_gauche, (CARRE, CARRE))
+perso= perso_bas
+position = perso_bas.get_rect()
 # Il faut penser à rafraichir l'écran ! (Surtout en été)
 pygame.display.flip()
 
@@ -59,14 +63,18 @@ while continuer:
             continuer = 0
         if event.type == KEYDOWN:
             if event.key == K_RIGHT:
+                perso = perso_droite
                 move(structure, position, "droite")
             if event.key == K_LEFT:
+                perso = perso_gauche
                 move(structure, position, "gauche")
 
             if event.key == K_UP:
+                perso = perso_haut
                 move(structure, position, "haut")
 
             if event.key == K_DOWN:
+                perso = perso_bas
                 move(structure, position, "bas")
 
     fenetre.fill(COULEUR)
